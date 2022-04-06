@@ -21,7 +21,7 @@ const inventors = [
          inventor => console.log(`${inventor.first.padEnd(12,' ')}${inventor.last.padEnd(12,' ')}${inventor.year}`)
       );
   }
-  //printInventors(inventors);
+  printInventors(inventors);
 
   // TODO 2: Mostrar por consola los inventores nacidos antes del 1800
   function filterInventors(inventors){

@@ -28,3 +28,59 @@ const str = `<ul>
 <li data-time="5:59">Redux Video</li>
 <li data-time="3:31">Flexbox Video</li>
 </ul>`;
+
+let tiempoTotal = 0;
+
+function armarArray (str)
+{
+    return str
+    .split('\n')
+    .filter(line => line != '<ul>' && line != '</ul>')
+    .map
+    (
+        cadena => ({
+            min: parseInt(cadena.replace('<li data-time="', '')
+                    .replace('</li>','')
+                    .replace('">Redux Video', '')
+                    .replace('">Flexbox Video', ''))*60,
+            seconds: parseInt(cadena.replace('<li data-time="', '')
+                    .replace('</li>','')
+                    .replace('">Redux Video', '')
+                    .replace('">Flexbox Video', '')
+                    .substr(2, 4)
+                    .replace(':', '')),
+            type: String(cadena.replace('<li data-time="', '')
+                        .replace('</li>','')
+                        .replace('"', '')
+                        .replace(':', '')
+                        .split('>')
+                        .splice(1))
+        })
+    )
+    .map
+    (
+        cadena2 => ({
+            time: cadena2.min + cadena2.seconds,
+            type: cadena2.type
+        })
+    )
+
+}
+
+function tiempoPorTipo(tipo)
+{
+    armarArray(str)
+    .filter(a => a.type === tipo)
+    .forEach
+    (
+        element => 
+        {
+            tiempoTotal = tiempoTotal+element.time
+        }
+    )
+    
+    return 'Time: ' + tiempoTotal + ' seconds | Type: ' + tipo
+}
+
+console.log(armarArray(str))
+console.log(tiempoPorTipo('Redux Video'))

@@ -25,4 +25,40 @@ function orderBeers(beers){
     .sort((a,b)=> a.type > b.type ? 1:-1);
 }
 
-console.log(orderBeers(beers));
+// PUNTO 1
+function setPrice (beers)
+{
+  beers.forEach(beer => {
+    if(beer.name === 'Purple Iris')
+    {
+      beer.price = 320
+    }else if(beer.abv < 5.0)
+    {
+      beer.price = 300
+    }else
+    {
+      beer.price = 350
+    }
+  });
+  
+}
+
+// setPrice(beers)
+// console.log(beers);
+
+// PUNTO 2
+console.log(
+  beers.map( beer => ({
+     name: beer.name,
+     abv: beer.abv,
+     label: beer.label,
+     type: beer.type,
+     file_name: beer.label.split("/").pop(),
+     price: beer.price
+  }))
+);
+
+function orderBeersByPrice(beers){
+  return beers
+    .sort((a,b)=> a.price - b.price);
+}
