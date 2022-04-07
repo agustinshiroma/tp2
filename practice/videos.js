@@ -29,7 +29,6 @@ const str = `<ul>
 <li data-time="3:31">Flexbox Video</li>
 </ul>`;
 
-let tiempoTotal = 0;
 
 function armarArray (str)
 {
@@ -42,13 +41,12 @@ function armarArray (str)
             min: parseInt(cadena.replace('<li data-time="', '')
                     .replace('</li>','')
                     .replace('">Redux Video', '')
-                    .replace('">Flexbox Video', ''))*60,
+                    .replace('">Flexbox Video', '')),
             seconds: parseInt(cadena.replace('<li data-time="', '')
                     .replace('</li>','')
                     .replace('">Redux Video', '')
                     .replace('">Flexbox Video', '')
-                    .substr(2, 4)
-                    .replace(':', '')),
+                    .slice(-2)),
             type: String(cadena.replace('<li data-time="', '')
                         .replace('</li>','')
                         .replace('"', '')
@@ -57,29 +55,26 @@ function armarArray (str)
                         .splice(1))
         })
     )
-    .map
-    (
-        cadena2 => ({
-            time: cadena2.min + cadena2.seconds,
-            type: cadena2.type
-        })
-    )
 
 }
 
 function tiempoPorTipo(tipo)
 {
+    let tiempoTotal = 0;
+    
     armarArray(str)
     .filter(a => a.type === tipo)
     .forEach
     (
         element => 
         {
-            tiempoTotal = tiempoTotal+element.time
+            tiempoTotal = tiempoTotal+ ((element.min * 60) + element.seconds)
         }
     )
     
-    return 'Time: ' + tiempoTotal + ' seconds | Type: ' + tipo
+    return 'Total time: ' + tiempoTotal + ' seconds | Type: ' + tipo
+
+    //Desafio: Se puede realizar con reduce
 }
 
 console.log(armarArray(str))
