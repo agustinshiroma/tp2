@@ -50,7 +50,7 @@ function updateInventor(inventor)
 }
 
 // updateInventor({ _id: 9, first: 'Agustin', last: 'Perez', year: 1978 })
-// console.log(inventors);
+ console.log(inventors);
 
 
 // TODO: deleteInventor(id)
@@ -63,4 +63,4 @@ function deleteInventor(id)
 }
 
 //deleteInventor(4);
-console.log(inventors);
+//console.log(inventors);

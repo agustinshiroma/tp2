@@ -1,0 +1,19 @@
+{
+  "name": "betp2-2022c1-d",
+  "version": "1.0.0",
+  "description": "Codigo fuente del taller TP2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agustinshiroma/tp2.git"
+  },
+  "author": "Agustin Shiroma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agustinshiroma/tp2/issues"
+  },
+  "homepage": "https://github.com/agustinshiroma/tp2#readme"
+}
