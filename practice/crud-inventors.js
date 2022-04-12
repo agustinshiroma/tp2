@@ -15,7 +15,7 @@ function getInventors()
 // TODO: getInventors(id)
 function getInventorsById(id)
 {
-    return inventors.filter(inventor => inventor._id === id);
+    return inventors.find(inventor => inventor._id === id);
 }
 
 //console.log(getInventorsById(4));
